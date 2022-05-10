@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="appbar_height">@dimen/_50sdp</dimen>
+    <dimen name="size_input_menu_item">@dimen/_36sdp</dimen>
+    <dimen name="size_radius_input_menu_item">@dimen/_18sdp</dimen>
+    <dimen name="width_dialog_input">@dimen/_264sdp</dimen>
+    <dimen name="corners_dialog">@dimen/_18sdp</dimen>
+    <dimen name="icon_dialog_size">@dimen/_60sdp</dimen>
+    <dimen name="icon_dialog_size_half">@dimen/_30sdp</dimen>
+</resources>

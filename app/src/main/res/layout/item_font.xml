@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.lhd.apps.pagenote.models.AppFont" />
+
+        <variable
+            name="listener"
+            type="com.lhd.apps.pagenote.adapter.ListenerAdapterFont" />
+
+        <variable
+            name="itemPosition"
+            type="Integer" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        debounceClick="@{()->listener.onFontClick(item, itemPosition)}"
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="match_parent"
+        android:background="?selectableItemBackground">
+
+        <me.grantland.widget.AutofitTextView
+            android:id="@+id/tvFont"
+            tv_set_font="@{item}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:gravity="center"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="@{item.name}"
+            android:textColor="@color/teal_700"
+            android:textSize="@dimen/_16ssp"
+            tools:text="Test Font" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

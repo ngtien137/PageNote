@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="viewModel"
+            type="com.lhd.apps.pagenote.viewmodel.InputNoteViewModel" />
+
+        <variable
+            name="adapterFont"
+            type="androidx.recyclerview.widget.RecyclerView.Adapter" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.screen.input_note.InputNoteFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/appbar_height"
+            android:background="@color/white"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnClose"
+                debounceClick="@{viewListener::onClick}"
+                android:layout_width="@dimen/appbar_height"
+                android:layout_height="match_parent"
+                android:background="?selectableItemBackground"
+                android:padding="@dimen/_18sdp"
+                android:src="@drawable/ic_close_default"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                style="@style/TextRoboto500"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:text="@string/create_note"
+                android:textColor="@color/dark"
+                android:textSize="@dimen/_20ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/btnClose"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/btnSave"
+                debounceClick="@{viewListener::onClick}"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_28sdp"
+                android:layout_marginEnd="@dimen/_14sdp"
+                android:background="@drawable/btn_save"
+                android:gravity="center"
+                android:paddingStart="@dimen/_16sdp"
+                android:paddingEnd="@dimen/_16sdp"
+                android:text="@string/save"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#80B2B2B2"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:clipToPadding="false"
+            android:paddingBottom="@dimen/_200sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appbar">
+
+            <LinearLayout
+                android:id="@+id/llLayoutInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btnMenu"
+            debounceClick="@{viewListener::onClick}"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_margin="@dimen/_14sdp"
+            android:background="?selectableItemBackground"
+            app:cardBackgroundColor="@color/color_app_orange"
+            app:cardCornerRadius="@dimen/_20sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <ImageView
+                img_anim_menu="@{viewModel.liveMenuState}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/_14sdp"
+                android:src="@drawable/ic_add_simple"
+                tools:ignore="ContentDescription" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/miFont"
+            anim_menu_item="@{viewModel.liveMenuState}"
+            debounceClick="@{viewListener::onClick}"
+            android:layout_width="@dimen/size_input_menu_item"
+            android:layout_height="@dimen/size_input_menu_item"
+            android:visibility="gone"
+            app:cardBackgroundColor="@color/color_menu_item"
+            app:cardCornerRadius="@dimen/size_radius_input_menu_item"
+            app:layout_constraintBottom_toBottomOf="@id/btnMenu"
+            app:layout_constraintEnd_toStartOf="@id/miFontSize"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/btnMenu">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/_10sdp"
+                android:src="@drawable/ic_menu_font"
+                android:tint="@color/teal_700"
+                tools:ignore="ContentDescription" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/miFontSize"
+            anim_menu_item="@{viewModel.liveMenuState}"
+            anim_visible="gone"
+            debounceClick="@{viewListener::onClick}"
+            android:layout_width="@dimen/size_input_menu_item"
+            android:layout_height="@dimen/size_input_menu_item"
+            android:visibility="gone"
+            app:cardBackgroundColor="@color/color_menu_item"
+            app:cardCornerRadius="@dimen/size_radius_input_menu_item"
+            app:layout_constraintBottom_toBottomOf="@id/btnMenu"
+            app:layout_constraintEnd_toStartOf="@id/btnMenu"
+            app:layout_constraintStart_toEndOf="@id/miFont"
+            app:layout_constraintTop_toTopOf="@id/btnMenu">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/_10sdp"
+                android:src="@drawable/ic_menu_font_size"
+                android:tint="@color/teal_700"
+                tools:ignore="ContentDescription" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvMenuFont"
+            anim_menu_bottom="@{viewModel.liveModeFont}"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_60sdp"
+            app:cardElevation="@dimen/_2sdp"
+            app:layout_constraintTop_toBottomOf="parent"
+            tools:visibility="gone">
+
+            <androidx.recyclerview.widget.RecyclerView
+                rv_set_adapter="@{adapterFont}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_font" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btnCloseMenuFont"
+            anim_menu_item="@{viewModel.liveModeFont}"
+            debounceClick="@{viewListener::onClick}"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginEnd="@dimen/_14sdp"
+            android:layout_marginBottom="@dimen/_40sdp"
+            android:background="?selectableItemBackground"
+            android:visibility="gone"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/_20sdp"
+            app:cardElevation="@dimen/_4sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:visibility="gone">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/_14sdp"
+                android:src="@drawable/ic_close_default"
+                tools:ignore="ContentDescription" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvMenuFontSize"
+            anim_menu_bottom="@{viewModel.liveModeFontSize}"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_60sdp"
+            app:cardElevation="@dimen/_2sdp"
+            app:layout_constraintTop_toBottomOf="parent"
+            tools:visibility="visible">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:textColor="@color/dark"
+                    android:layout_marginStart="@dimen/_18sdp"
+                    style="@style/TextRoboto500"
+                    android:text="@string/change_text_size"
+                    android:textSize="@dimen/_11ssp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <com.google.android.material.slider.Slider
+                    android:value="1"
+                    android:id="@+id/slFontSize"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginStart="@dimen/_14sdp"
+                    android:layout_marginEnd="@dimen/_14sdp"
+                    android:valueFrom="0.5"
+                    android:valueTo="20"
+                    app:haloColor="@color/color_app_orange"
+                    app:haloRadius="@dimen/_10sdp"
+                    app:thumbColor="@color/color_app_orange"
+                    app:thumbRadius="@dimen/_8sdp"
+                    app:tickColor="@color/color_app_orange"
+                    app:trackColorActive="@color/color_app_orange"
+                    app:trackColorInactive="@color/color_slider_unselected" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btnCloseMenuFontSize"
+            anim_menu_item="@{viewModel.liveModeFontSize}"
+            debounceClick="@{viewListener::onClick}"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginEnd="@dimen/_14sdp"
+            android:layout_marginBottom="@dimen/_40sdp"
+            android:background="?selectableItemBackground"
+            android:visibility="gone"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/_20sdp"
+            app:cardElevation="@dimen/_4sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:visibility="gone">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/_14sdp"
+                android:src="@drawable/ic_close_default"
+                tools:ignore="ContentDescription" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

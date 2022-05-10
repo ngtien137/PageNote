@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="builder"
+            type="com.lhd.apps.pagenote.view.dialog.DialogInputText.Builder" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/rootDialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/clDialog"
+                android:layout_width="@dimen/width_dialog_input"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/icon_dialog_size_half"
+                app:cardCornerRadius="@dimen/corners_dialog"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvDialogTitle"
+                        style="@style/TextRoboto500"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_40sdp"
+                        android:gravity="center"
+                        android:text="@{builder.textTitle}"
+                        android:textColor="@color/dark"
+                        android:textSize="@dimen/_16ssp"
+                        tools:text="@string/rename" />
+
+                    <EditText
+                        android:id="@+id/edtName"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_32sdp"
+                        android:layout_marginStart="@dimen/_14sdp"
+                        android:layout_marginTop="@dimen/_9sdp"
+                        android:layout_marginEnd="@dimen/_14sdp"
+                        android:background="@drawable/bg_dialog_edt"
+                        android:maxLength="30"
+                        android:paddingStart="@dimen/_14sdp"
+                        android:paddingEnd="@dimen/_14sdp"
+                        android:singleLine="true"
+                        android:text="@{builder.currentPathNameWithoutExtension}"
+                        android:textColor="@color/dark"
+                        android:textSize="@dimen/_13ssp" />
+
+                    <TextView
+                        android:id="@+id/tvError"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_32sdp"
+                        android:layout_marginStart="@dimen/_28sdp"
+                        android:layout_marginEnd="@dimen/_28sdp"
+                        android:paddingTop="@dimen/_4sdp"
+                        android:textColor="#ef3434"
+                        android:textSize="@dimen/_9ssp"
+                        tools:text="@string/name_is_special" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_36sdp"
+                        android:background="#f5f5f5"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/btnNegative"
+                            style="@style/TextRoboto500"
+                            debounceClick="@{viewListener::onClick}"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="?selectableItemBackground"
+                            android:gravity="center"
+                            android:text="@string/cancel"
+                            android:textColor="#817F7F"
+                            android:textSize="@dimen/_14sdp" />
+
+                        <TextView
+                            android:id="@+id/btnPositive"
+                            style="@style/TextRoboto500"
+                            debounceClick="@{viewListener::onClick}"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="?selectableItemBackground"
+                            android:gravity="center"
+                            android:text="@string/save"
+                            android:textColor="@color/color_text_confirm"
+                            android:textSize="@dimen/_14sdp"
+                            tools:text="@string/save"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                app:cardBackgroundColor="@color/color_text_confirm"
+                app:cardCornerRadius="@dimen/icon_dialog_size_half"
+                app:cardElevation="@dimen/_2sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="@dimen/icon_dialog_size"
+                android:layout_height="@dimen/icon_dialog_size">
+
+                <ImageView
+                    app:tint="@color/white"
+                    android:padding="@dimen/_14sdp"
+                    android:id="@+id/imgDialogIcon"
+                    img_load_drawable_id="@{builder.drawableIcon}"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:ignore="ContentDescription"
+                    tools:src="@drawable/ic_edit" />
+
+            </androidx.cardview.widget.CardView>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

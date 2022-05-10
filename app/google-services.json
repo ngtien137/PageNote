@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "370399386851",
+    "project_id": "page-note-54e38",
+    "storage_bucket": "page-note-54e38.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:370399386851:android:41fab99e27d6ab81b479d6",
+        "android_client_info": {
+          "package_name": "com.lhd.apps.pagenote"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "370399386851-m1chm0nemqvh7meledvsh91vhavungp0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lhd.apps.pagenote",
+            "certificate_hash": "93119dabbe93cea5c5bccf76a622875938d48fe8"
+          }
+        },
+        {
+          "client_id": "370399386851-m8bte8jqktsj0g9q66atchvdl9lvv5u4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDMgDIOGt_-TZWRKe1o1MSbUsyZMxr2-o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "370399386851-m8bte8jqktsj0g9q66atchvdl9lvv5u4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
